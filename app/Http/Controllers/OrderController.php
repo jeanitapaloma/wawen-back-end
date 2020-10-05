@@ -30,5 +30,11 @@ class OrderController extends Controller
         $order->delete();
     }
 
+    public function store(OrderRequest $request)
+    {
+        dd($request->validated());
+        Order::create($request->validated());
+    }
+
 
 }

@@ -13,8 +13,7 @@ class ProductController extends Controller
     }
     public function store(ProductRequest $request)
     {
-        $data = $request->validated();
-        Product::create($data);
+        Product::create($request->validated());
         return response('Product successfully added.');
     }
 

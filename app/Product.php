@@ -3,11 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Product extends Model
 
 {
-    use SoftDeletes;
 
     protected $guarded = [];
 
@@ -23,4 +22,10 @@ class Product extends Model
     {
         return $this->morphOne('App\Image', 'imageable');
     }
+        public function orders()
+    {
+        return $this->belongsToMany(Order::class,'order_product_details');
+    }
+
+
 }

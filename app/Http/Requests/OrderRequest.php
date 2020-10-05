@@ -13,7 +13,7 @@ class OrderRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,23 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            // Order Validation rules
+            'account_id' => 'required|integer',
+            'status' => 'sometimes|string',
+            'label' => 'required|string',
+            'confirmed_delivery_date' => 'sometimes|string',
+            'confirmed_delivery_time' => 'sometimes|string',
+            'choosen_delivery_date' => 'required|string',
+            'choosen_delivery_time' => 'required|string',
+            'payment' => 'required|string',
+            'active_contact' => 'required|string',
+            'reciever_name' => 'required|string',
+            'delivery_address' => 'required|string',
+            'customer_message' => 'sometimes|string',
+            'admin_remarks' => 'sometimes|string',
+            'total_amount' => 'required|integer',
+            'delivery_fee' => 'required|integer',
+            'overall_payment' => 'required|integer'
+            
         ];
     }
 }

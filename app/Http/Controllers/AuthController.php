@@ -22,6 +22,7 @@ class AuthController extends Controller
         ]);
         return response($user);
     }
+
     public function login(AuthRequest $request)
     {
 

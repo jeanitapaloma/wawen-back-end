@@ -12,4 +12,11 @@ class Order extends Model
     {
         return $query->where('status',$status);
     }
+
+   public function products()
+   {
+       return $this->belongsToMany(Product::class,'order_product_details');
+   }
+
+
 }

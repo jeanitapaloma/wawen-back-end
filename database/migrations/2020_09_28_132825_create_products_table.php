@@ -16,13 +16,12 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
-            $table->string('name');
+            $table->string('product_name');
             $table->double('price');
             $table->string('unit');
             $table->string('description');
             $table->tinyInteger('total_sold_out')->default(0);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -33,9 +32,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropSoftDeletes();
-        });
         Schema::dropIfExists('products');
 
     }

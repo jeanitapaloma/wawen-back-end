@@ -22,10 +22,14 @@ class Product extends Model
     {
         return $this->morphOne('App\Image', 'imageable');
     }
-        public function orders()
+    public function orders()
     {
-        return $this->belongsToMany(Order::class,'order_product_details');
+        return $this->belongsToMany(Order::class, 'order_product_details')
+                    ->withPivot('sub_quantity', 'sub_total');
     }
 
-
+    public function cart()
+    {
+        return $this->belongsToMany(Cart::class);
+    }
 }

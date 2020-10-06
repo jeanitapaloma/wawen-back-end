@@ -16,7 +16,11 @@ class CartController extends Controller
 
     public function store(CartRequest $request, User $user)
     {
-        $user->carts()->create($request->validated());
+      $cart =  $user->carts()->create();
+      $cart->products()->attach([$request->validated()['id'] => [
+        'sub_quantity' => $request->validated()['sub_quantity'],
+        'sub_total' => $request->validated()['sub_total']
+    ]]);
     }
 
     public function update(CartRequest $request, Cart $cart)

@@ -40,7 +40,6 @@ class OrderRequest extends FormRequest
             'total_amount' => 'required|integer',
             'delivery_fee' => 'required|integer',
             'overall_payment' => 'required|integer'
-            
         ];
     }
 }

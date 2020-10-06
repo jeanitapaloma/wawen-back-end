@@ -32,6 +32,6 @@ class CreateUserInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_infos');
+        Schema::dropIfExists('account_details');
     }
 }

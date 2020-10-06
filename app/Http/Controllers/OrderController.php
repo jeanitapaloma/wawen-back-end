@@ -32,8 +32,16 @@ class OrderController extends Controller
 
     public function store(OrderRequest $request)
     {
-        dd($request->validated());
-        Order::create($request->validated());
+
+        $order =  Order::create($request->validated());
+        foreach($request->products as $product){
+            $order->products()->attach([$product['id'] => [
+                'sub_quantity' => $product['sub_quantity'],
+                'sub_total' => $product['sub_total']
+            ]]);
+        }
+
+        return true;
     }
 
 

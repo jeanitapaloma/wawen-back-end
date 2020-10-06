@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('account_id');
-            $table->string('status');
+            $table->string('status')->default('pending');
             $table->string('label');
             $table->string('confirmed_delivery_date')->nullable();
             $table->string('confirmed_delivery_time')->nullable();

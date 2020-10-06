@@ -21,13 +21,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/login', 'AuthController@login');
-
-
 Route::post('/register','AuthController@register');
-
 Route::resource('categories', 'CategoryController');
 Route::resource('products', 'ProductController');
 Route::resource('orders', 'OrderController');
 
 
-Route::get('/dummy', 'DummyController@test');
+Route::get('/test', function () {
+    return response(User::all());
+});

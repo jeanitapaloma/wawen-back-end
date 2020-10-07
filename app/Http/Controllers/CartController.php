@@ -26,10 +26,27 @@ class CartController extends Controller
     public function update(CartRequest $request, Cart $cart)
     {
         $cart->update($request->validated());
+        $validator = Validator::make($request->all(), [
+            'quantity' => 'required|integer'
+        ]);
+
+         if ($validator->fails()) {
+            session()->flash('error_message', 'Quantity must be integer');
+            return response()->json(['success' => false]);
+         }
+
+        Cart::update($cart, $request->sub_quantity);
+        session()->flash('success_message', 'Quantity was updated successfully!');
+
+        return response()->json(['success' => true]);
+   
     }
 
     public function destroy(Cart $cart)
     {
         $cart->delete();
+        Cart::remove($cart);
+        return redirect('cart')->withSuccessMessage('Item has been removed!');
+     
     }
 }

@@ -47,9 +47,9 @@ class User extends Authenticatable
         return $this->morphOne('App\Image', 'imageable');
     }
 
-    public function carts()
+    public function cart()
     {
-        return $this->hasMany(Cart::class,'account_id','id');
+        return $this->hasOne(Cart::class, 'account_id','id');
     }
 
     public function userInfo()

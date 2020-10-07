@@ -20,16 +20,6 @@ class OrderController extends Controller
         return $this->orderRepository->getAllOrder();
     }
 
-    public function update(OrderRequest $request,Order $order)
-    {
-        $order->update($request->validated());
-    }
-
-    public function destroy(Order $order)
-    {
-        $order->delete();
-    }
-
     public function store(OrderRequest $request)
     {
 
@@ -43,6 +33,16 @@ class OrderController extends Controller
 
         return true;
     }
+    public function update(OrderRequest $request,Order $order)
+    {
+        $order->update($request->validated());
+    }
+
+    public function destroy(Order $order)
+    {
+        $order->delete();
+    }
+
 
 
 }

@@ -34,7 +34,9 @@ class AuthController extends Controller
             ],403);
         }
 
-        return $user->createToken('access_token')->plainTextToken;
+        $user->createToken('access_token')->plainTextToken;
+
+        return $user;
     }
 
     public function logout()
